@@ -1,0 +1,44 @@
+const dataList = require("./public/mock/datail.json")
+module.exports = {
+  lintOnSave:false,
+  devServer:{
+    before(app) {
+      //轮播图数据接口
+      app.get("/getdata",(req,res)=>{
+        res.json({
+          code:0,
+          list:dataList
+        })
+      })
+      //购物车数据接口
+      app.get("/cartList",(req,res)=>{
+        res.json([{
+          price:200,
+          name:"小米",
+          id:0,
+          count:0
+        },{
+          price:100,
+          name:"大米",
+          id:1,
+          count:0
+        },{
+          price:200,
+          name:"红米",
+          id:2,
+          count:0
+        },{
+          price:300,
+          name:"爆米花",
+          id:3,
+          count:0
+        },{
+          price:200,
+          name:"花生米",
+          id:4,
+          count:0
+        }])
+      })
+    }
+  }
+}
